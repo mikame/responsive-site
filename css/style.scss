@@ -1,0 +1,175 @@
+@import "compass";
+@import url(https://fonts.googleapis.com/css?family=Abel);
+// font-family
+$baseFontFamily :"游ゴシック", YuGothic, "メイリオ",Verdana, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+
+// colors
+$baseColor: #f8f4e6; // 象牙色
+$subColor: #b94047; // 臙脂色
+$keyColor: #2a83a2; // 花浅葱色
+$fontColor: #302833; // 黒紅色
+
+/* Base
+------------------------------------------------*/
+html { font-size: 62.5%; }
+
+body {
+    color: $fontColor;
+    font-size: 1.4rem;
+    font-family: $baseFontFamily;
+    line-height:1.6;
+    background-color: $baseColor;
+}
+
+a {
+    @include link-colors($keyColor, darken($keyColor, 10%), lighten($keyColor, 5%), darken($keyColor, 10%));
+  text-decoration: none;
+}
+
+/* Align
+------------------------------------------------*/
+.text-center {
+    text-align: center;
+}
+
+/* Layout
+------------------------------------------------*/
+.block-center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Font
+------------------------------------------------*/
+.abel {
+    font-family: 'Abel', sans-serif;
+}
+.uppercase {
+    text-transform: uppercase;
+}
+
+
+/* Header
+------------------------------------------------*/
+header {
+    .main_img {
+       width: 100%;
+       height: 250px;
+       background: url('../img/main_image.jpg');
+       background-size: cover;
+       background-position: center center;
+    }
+}
+// desktop
+@media (min-width: 769px){
+    header {
+    .main_img {
+       width: 100%;
+       height: 500px;
+       background: url('../img/main_image.jpg');
+       background-size: cover;
+       background-position: center center;
+    }
+}
+}
+
+
+/* Contents
+------------------------------------------------*/
+// Common Styles
+section {
+  padding: 60px 0;
+  .container {
+    width: 90%;
+    @extend .block-center;
+  }
+  h2 {
+    @extend .abel;
+    font-size: 3.2rem;
+    @extend .uppercase;
+  }
+}
+
+// Pushpoints
+#pushpoints {
+  background-color: $subColor;
+  .container {
+    @include display-flex;
+    justify-content: space-between;
+    @include flex-direction(column);    // スキルボックスを縦に並べる
+  }
+  h2 {
+    color: $baseColor;
+    margin-bottom: 60px;
+  }
+  .pushpoint-box {
+    @include flex(1);
+    margin: 10px 0;                     // 上下にマージン
+    padding: 20px;
+    background-color: $baseColor;
+    @include border-radius(4px);
+    @include box-sizing(border-box);
+  }
+  h3 {
+    @extend .abel;
+    @extend .uppercase;
+    color: $keyColor;
+    margin-bottom:10px;
+    font-size: 2.4rem;
+    font-weight: bold;
+  }
+}
+
+// desktop
+@media (min-width: 769px) {
+    // pushpoints
+  #pushpoints {
+    .container {
+      @include flex-direction(row);     // スキルボックスを横に並べる
+      justify-content: space-between;
+    }
+    .pushpoint-box {
+      margin: 0 10px;                   // 左右にマージン
+    }
+  }
+}
+
+// Whoishe
+#whoishe {
+  .button-readmore {
+      margin: auto;
+      text-align: center;
+      padding: 5px 0;
+      width: 180px;
+      display: block;
+      color: #FFF;
+      font-weight: bold;
+      background-color: $keyColor;
+      @extend .abel;
+      @extend .uppercase;
+      @include border-radius(4px);
+      font-size: 2rem;
+    }
+}
+
+/* Footer
+------------------------------------------------------------*/
+footer {
+  background-color: $subColor;
+  padding: 10px 0;
+  text-align: center;
+  color: #FFF;
+}
+
+// desktop
+@media (min-width: 769px) {
+  // Whoishe
+  #whoishe {
+    a {
+        &:hover {
+          background-color: darken($keyColor, 10%);
+        }
+      }
+    }
+  }
